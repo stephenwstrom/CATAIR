@@ -8,12 +8,28 @@ This schema is not yet complete.
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:fn="http://www.w3.org/2005/xpath-functions">
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:catair="http://catair.cbp.dhs.gov"
+    targetNamespace="http://catair.cbp.dhs.gov">
 
-  <xs:element name="Batch" dfdl:lengthKind="explicit">
+  <xs:include schemaLocation="org/apache/daffodil/xsd/DFDLGeneralFormat.dfdl.xsd" />
+
+  <xs:annotation>
+    <xs:appinfo source="http://www.ogf.org/dfdl/">
+      <dfdl:format
+	  ref="catair:GeneralFormat"
+	  representation="text"
+	  textNumberRep="standard"
+	  encoding="ASCII" />
+    </xs:appinfo>
+  </xs:annotation>
+
+  
+  <xs:element name="BatchControlHeader">
 
     <xs:complexType>
       <xs:sequence>
+	<xs:element name="ControlIdentifier" type="xs:string" dfdl:length="1" dfdl:lengthKind="explicit"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
