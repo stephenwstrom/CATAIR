@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+This schema is not yet complete.
+-->
+
+<xs:schema
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions">
+
+  <xs:element name="Batch" dfdl:lengthKind="explicit">
+
+    <xs:complexType>
+      <xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    
+  
+</xs:schema>
