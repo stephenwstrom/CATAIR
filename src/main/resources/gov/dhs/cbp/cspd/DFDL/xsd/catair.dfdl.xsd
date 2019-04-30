@@ -17,19 +17,22 @@ This schema is not yet complete.
   <xs:annotation>
     <xs:appinfo source="http://www.ogf.org/dfdl/">
       <dfdl:format
-	  ref="catair:GeneralFormat"
-	  representation="text"
-	  textNumberRep="standard"
-	  encoding="ASCII" />
+      ref="catair:GeneralFormat"
+      />
     </xs:appinfo>
   </xs:annotation>
-
   
   <xs:element name="BatchControlHeader">
 
     <xs:complexType>
       <xs:sequence>
-	<xs:element name="ControlIdentifier" type="xs:string" dfdl:length="1" dfdl:lengthKind="explicit"/>
+	<xs:element name="ControlIdentifier" type="xs:string" dfdl:length="1" dfdl:lengthKind="explicit">
+	  <xs:annotation>
+	    <xs:appinfo source="http://www.org.org/dfdl/">
+	      <dfdl:assert message="Error! Error!" test="{ . eq 'A' }" />
+	    </xs:appinfo>
+	  </xs:annotation>
+	</xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
