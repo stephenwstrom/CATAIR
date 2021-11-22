@@ -9,8 +9,8 @@ This schema is not yet complete.
     xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    xmlns:catair="http://catair.cbp.dhs.gov"
-    targetNamespace="http://catair.cbp.dhs.gov">
+    xmlns:catair="http://catair.stephenwstrom.com"
+    targetNamespace="http://catair.stephenwstrom.com">
 
   <xs:include schemaLocation="org/apache/daffodil/xsd/DFDLGeneralFormat.dfdl.xsd" />
 
