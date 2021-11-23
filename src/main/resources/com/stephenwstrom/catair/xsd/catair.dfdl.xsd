@@ -4,47 +4,62 @@
 This schema is not yet complete.
 -->
 
-<xs:schema
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    xmlns:catair="http://catair.stephenwstrom.com"
-    targetNamespace="http://catair.stephenwstrom.com">
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:catair="urn:catair"
+  targetNamespace="urn:catair" elementFormDefault="unqualified">
 
-  <xs:include schemaLocation="org/apache/daffodil/xsd/DFDLGeneralFormat.dfdl.xsd" />
+  <xs:include schemaLocation="org/apache/daffodil/xsd/DFDLGeneralFormat.dfdl.xsd"/>
 
   <xs:annotation>
     <xs:appinfo source="http://www.ogf.org/dfdl/">
       <dfdl:format ref="catair:GeneralFormat"/>
-
     </xs:appinfo>
   </xs:annotation>
-  
-  <xs:element name="BatchControlHeader">
 
+  <xs:element name="Catair">
     <xs:complexType>
       <xs:sequence>
-	<xs:element name="ControlIdentifier" fixed="A" type="xs:string" dfdl:length="1" dfdl:lengthKind="explicit">
-	  <xs:annotation>
-	    <xs:appinfo source="http://www.org.org/dfdl/">
-	      <dfdl:assert message="Error! Error!" test="{ . eq 'A' }" />
-	    </xs:appinfo>
-	  </xs:annotation>
-	</xs:element>
-	<xs:element name="SenderReceiverSiteCode" type="xs:string" dfdl:length="4" dfdl:lengthKind="explicit"/>
-	<xs:element name="SenderReceiverIDCode" type="xs:string" dfdl:length="3" dfdl:lengthKind="explicit"/>
-	<xs:element name="CommunicationPassword" type="xs:string" dfdl:length="6" dfdl:lengthKind="explicit"/>
-	<xs:element name="TransmissionDate" type="xs:date" dfdl:length="6" dfdl:lengthKind="explicit" dfdl:calendarPatternKind="explicit" dfdl:calendarPattern="MMddyy"/>
-	<xs:element name="Filler1" fixed="     " type="xs:string" dfdl:length="5" dfdl:lengthKind="explicit" />
-	<xs:element name="ApplicationIdentifierCode" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>
-	<xs:element name="Filler2" fixed="          " type="xs:string" dfdl:length="10" dfdl:lengthKind="explicit" />
-	<xs:element name="SenderReceiverOfficeCode" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>
-	<xs:element name="Filler3" fixed="                    " type="xs:string" dfdl:length="20" dfdl:lengthKind="explicit" />
-	<xs:element name="TransmittersUserDataText" type="xs:string" dfdl:length="21" dfdl:lengthKind="explicit"/>
+        <xs:element name="batchControlHeader" type="catair:BatchControlHeader"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-    
-  
+
+
+
+  <xs:complexType name="BatchControlHeader">
+    <xs:sequence>
+      <xs:element name="ControlIdentifier" fixed="A" type="xs:string" dfdl:length="1"
+        dfdl:lengthKind="explicit">
+        <xs:annotation>
+          <xs:appinfo source="http://www.org.org/dfdl/">
+            <dfdl:assert message="Error! Error!" test="{ . eq 'A' }"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SenderReceiverSiteCode" type="xs:string" dfdl:length="4"
+        dfdl:lengthKind="explicit"/>
+      <xs:element name="SenderReceiverIDCode" type="xs:string" dfdl:length="3"
+        dfdl:lengthKind="explicit"/>
+      <xs:element name="CommunicationPassword" type="xs:string" dfdl:length="6"
+        dfdl:lengthKind="explicit"/>
+      <xs:element name="TransmissionDate" type="xs:date" dfdl:length="6" dfdl:lengthKind="explicit"
+        dfdl:calendarPatternKind="explicit" dfdl:calendarPattern="MMddyy"/>
+      <xs:element name="Filler1" fixed="     " type="xs:string" dfdl:length="5"
+        dfdl:lengthKind="explicit"/>
+      <xs:element name="ApplicationIdentifierCode" type="xs:string" dfdl:length="2"
+        dfdl:lengthKind="explicit"/>
+      <xs:element name="Filler2" fixed="          " type="xs:string" dfdl:length="10"
+        dfdl:lengthKind="explicit"/>
+      <xs:element name="SenderReceiverOfficeCode" type="xs:string" dfdl:length="2"
+        dfdl:lengthKind="explicit"/>
+      <xs:element name="Filler3" fixed="                    " type="xs:string" dfdl:length="20"
+        dfdl:lengthKind="explicit"/>
+      <xs:element name="TransmittersUserDataText" type="xs:string" dfdl:length="21"
+        dfdl:lengthKind="explicit"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
 </xs:schema>
