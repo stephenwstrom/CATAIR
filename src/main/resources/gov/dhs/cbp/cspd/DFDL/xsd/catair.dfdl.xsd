@@ -12,7 +12,7 @@ This schema is not yet complete.
     xmlns:catair="http://catair.cbp.dhs.gov"
     targetNamespace="http://catair.cbp.dhs.gov">
 
-  <xs:include schemaLocation="org/apache/daffodil/xsd/DFDLGeneralFormat.dfdl.xsd" />
+  <xs:include schemaLocation="DFDLGeneralFormat.dfdl.xsd" />
 
   <xs:annotation>
     <xs:appinfo source="http://www.ogf.org/dfdl/">
