@@ -7,7 +7,7 @@ This schema is not yet complete.
 <xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:catair="urn:catair" targetNamespace="urn:catair" elementFormDefault="unqualified">
 
-  <xs:include schemaLocation="org/apache/daffodil/xsd/DFDLGeneralFormat.dfdl.xsd"/>
+  <xs:include schemaLocation="DFDLGeneralFormat.dfdl.xsd"/>
 
   <xs:annotation>
     <xs:appinfo source="http://www.ogf.org/dfdl/">
