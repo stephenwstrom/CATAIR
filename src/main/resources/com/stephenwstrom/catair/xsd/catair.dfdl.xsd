@@ -51,7 +51,7 @@ This schema is not yet complete.
       <xs:element name="Filler2" fixed="          " type="xs:string" dfdl:length="10" dfdl:lengthKind="explicit"/>
       <xs:element name="SenderReceiverOfficeCode" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>
       <xs:element name="Filler3" fixed="                    " type="xs:string" dfdl:length="20" dfdl:lengthKind="explicit"/>
-      <xs:element name="TransmittersUserDataText" type="xs:string" dfdl:length="20" dfdl:lengthKind="explicit"  />
+      <xs:element name="TransmittersUserDataText" type="xs:string" dfdl:length="21" dfdl:lengthKind="explicit"  />
     </xs:sequence>
   </xs:complexType>
 
