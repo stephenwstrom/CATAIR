@@ -28,10 +28,11 @@ This schema is not yet complete.
   </xs:simpleType>
  -->
 
-  <xs:element name="Catair">
+  <xs:element name="Catair" >
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="batchControlHeader" type="catair:BatchControlHeader"/>
+        <xs:element name="batchControlHeader" type="catair:BatchControlHeader" dfdl:initiator="A"/>
+        <xs:element name="batchControlTrailer" type="catair:BatchControlTrailer" dfdl:initiator="Z"/>  
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -39,7 +40,8 @@ This schema is not yet complete.
 
   <xs:complexType name="BatchControlHeader">
     <xs:sequence>
-      <xs:element name="ControlIdentifier" fixed="A" type="xs:string" dfdl:length="1" dfdl:lengthKind="explicit"/>
+<!--       <xs:element name="ControlIdentifier" fixed="A" type="xs:string" dfdl:length="1" dfdl:lengthKind="explicit"/>
+ -->      
       <xs:element name="SenderReceiverSiteCode" type="catair:AN" dfdl:length="4" dfdl:lengthKind="explicit"/>
       <xs:element name="SenderReceiverIDCode" type="xs:string" dfdl:length="3" dfdl:lengthKind="explicit"/>
       <xs:element name="CommunicationPassword" type="xs:string" dfdl:length="6" dfdl:lengthKind="explicit"/>
@@ -52,6 +54,14 @@ This schema is not yet complete.
       <xs:element name="TransmittersUserDataText" type="xs:string" dfdl:length="20" dfdl:lengthKind="explicit"  />
     </xs:sequence>
   </xs:complexType>
+
+  <xs:complexType name="BatchControlTrailer">
+    <xs:sequence>
+      <xs:element name="Data" type="xs:string" dfdl:length="79" dfdl:lengthKind="explicit"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  
 
 
 
