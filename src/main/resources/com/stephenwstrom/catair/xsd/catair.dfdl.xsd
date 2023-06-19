@@ -28,17 +28,38 @@ This schema is not yet complete.
   </xs:simpleType>
  -->
 
-  <xs:element name="Catair" >
-    <xs:complexType>
+
+
+<xs:complexType name="BatchType">
       <xs:sequence>
-        <xs:element name="batchControlHeader" type="catair:BatchControlHeader" dfdl:initiator="A"/>
-        <xs:element name="batchControlTrailer" type="catair:BatchControlTrailer" dfdl:initiator="Z"/>  
+        <xs:element name="BatchControlHeader" type="catair:BatchControlHeaderType" dfdl:initiator="A"/>
+        <xs:sequence>
+         <xs:element name="Record" type="xs:string" dfdl:length="80" dfdl:lengthKind="explicit"/>
+        </xs:sequence>
+        <xs:element name="BatchControlTrailer" type="catair:BatchControlTrailerType" dfdl:initiator="Z"/>  
       </xs:sequence>
-    </xs:complexType>
+  </xs:complexType>
+
+  <xs:complexType name="BatchesType">
+    <xs:sequence>
+      <xs:element name="Batch" type="catair:BatchType" maxOccurs="unbounded"/>
+    </xs:sequence>  
+  </xs:complexType>
+
+
+  <xs:element name="Batches" type="catair:BatchesType">
+    <xs:annotation>
+      <xs:documentation>
+        The Batch element is the root element of the CATAIR message.
+      </xs:documentation>
+    </xs:annotation>
+
   </xs:element>
 
 
-  <xs:complexType name="BatchControlHeader">
+
+
+  <xs:complexType name="BatchControlHeaderType">
     <xs:sequence>
 <!--       <xs:element name="ControlIdentifier" fixed="A" type="xs:string" dfdl:length="1" dfdl:lengthKind="explicit"/>
  -->      
@@ -55,7 +76,7 @@ This schema is not yet complete.
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="BatchControlTrailer">
+  <xs:complexType name="BatchControlTrailerType">
     <xs:sequence>
       <xs:element name="Data" type="xs:string" dfdl:length="79" dfdl:lengthKind="explicit"/>
     </xs:sequence>
