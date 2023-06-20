@@ -45,9 +45,17 @@ This schema is not yet complete.
   <xs:complexType name="BatchType">
     <xs:sequence dfdl:separator="%NL;">
       <xs:element name="BatchControlHeader" type="catair:BatchControlHeaderType" dfdl:initiator="A"/>
-      <xs:element name="Blocks" type="catair:BlocksType"/>
+      <xs:element name="Blocks" type="catair:BlocksType" maxOccurs="unbounded"/>
       <xs:element name="BatchControlTrailer" type="catair:BatchControlTrailerType" dfdl:initiator="Z"/>
     </xs:sequence>  
+  </xs:complexType>
+
+  
+
+  <xs:complexType name="EntrySummaryTransactionGrouping">
+    <xs:sequence dfdl:separator="%NL;">
+      <xs:element name="EntrySummaryHeaderControl" type="catair:EntrySummaryHeaderControlType" dfdl:initiator="10"/>
+    </xs:sequence>   
   </xs:complexType>
 
 
@@ -97,13 +105,40 @@ This schema is not yet complete.
 <!--
   Blocks
 -->
+
   
   <xs:complexType name="BlockType">
     <xs:sequence dfdl:separator="%NL;">
       <xs:element name="BlockControlHeader" type="catair:BlockControlHeaderType" dfdl:initiator="B"/>
-        <xs:sequence dfdl:separator="%NL;" >  
-         <xs:element name="EntrySummaryHeaderControl" type="xs:string" maxOccurs="unbounded" dfdl:lengthKind="delimited" dfdl:initiator="10" />
-      </xs:sequence>  
+
+
+      <xs:element name="Record" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence> 
+            <xs:element name="ControlIdentifier" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>  
+            <xs:choice dfdl:choiceDispatchKey="{ fn:substring(./ControlIdentifier,1,2) }">  
+              <xs:element name="EntrySummaryHeaderControl" type="xs:string" dfdl:lengthKind="delimited" dfdl:choiceBranchKey="10" /> 
+              <xs:element name="Record" dfdl:choiceBranchKey="SE">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ControlIdentifier" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>
+                    <xs:choice dfdl:choiceDispatchKey="{ fn:substring(./ControlIdentifier,1,2) }">
+                      <xs:element name="CorrectionRequestContactDetail" type="xs:string" dfdl:lengthKind="delimited" dfdl:choiceBranchKey="13" />
+                      <xs:element name="CargoReferenceInformation" type="xs:string" dfdl:lengthKind="delimited" dfdl:choiceBranchKey="20" />
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>  
+          </xs:sequence>  
+        </xs:complexType> 
+        
+
+
+
+
+      </xs:element>
+
      <xs:element name="BlockControlTrailer" type="catair:BlockControlTrailerType" dfdl:initiator="Y"/>
     </xs:sequence>
   </xs:complexType>
@@ -145,7 +180,12 @@ This schema is not yet complete.
     </xs:sequence>
   </xs:complexType>
 
- 
+  <xs:complexType name="CargoReleaseControlType">
+    <xs:sequence>
+      <xs:element name="Data" type="xs:string" dfdl:length="77" dfdl:lengthKind="explicit"/>
+    </xs:sequence>
+  </xs:complexType>
+
 
 
 
