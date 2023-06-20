@@ -28,9 +28,11 @@ This schema is not yet complete.
   </xs:simpleType>
  -->
 
+<!--
+  Batches
+-->
 
-
-<xs:complexType name="BatchType">
+<!-- <xs:complexType name="BatchType">
       <xs:sequence>
         <xs:element name="BatchControlHeader" type="catair:BatchControlHeaderType" dfdl:initiator="A"/>
         <xs:sequence>
@@ -38,13 +40,16 @@ This schema is not yet complete.
         </xs:sequence>
         <xs:element name="BatchControlTrailer" type="catair:BatchControlTrailerType" dfdl:initiator="Z"/>  
       </xs:sequence>
-  </xs:complexType>
+  </xs:complexType> -->
 
-  <xs:complexType name="BatchesType">
-    <xs:sequence>
-      <xs:element name="Batch" type="catair:BatchType" maxOccurs="unbounded"/>
+  <xs:complexType name="BatchType">
+    <xs:sequence dfdl:separator="%NL;">
+      <xs:element name="BatchControlHeader" type="catair:BatchControlHeaderType" dfdl:initiator="A"/>
+      <xs:element name="Blocks" type="catair:BlocksType"/>
+      <xs:element name="BatchControlTrailer" type="catair:BatchControlTrailerType" dfdl:initiator="Z"/>
     </xs:sequence>  
   </xs:complexType>
+
 
 
   <xs:element name="Batches" type="catair:BatchesType">
@@ -56,6 +61,12 @@ This schema is not yet complete.
 
   </xs:element>
 
+
+  <xs:complexType name="BatchesType">
+    <xs:sequence>
+      <xs:element name="Batch" type="catair:BatchType" maxOccurs="unbounded"/>
+    </xs:sequence>  
+  </xs:complexType>
 
 
 
@@ -78,11 +89,65 @@ This schema is not yet complete.
 
   <xs:complexType name="BatchControlTrailerType">
     <xs:sequence>
+      <xs:element name="Data" type="xs:string" dfdl:lengthKind="delimited"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+<!--
+  Blocks
+-->
+  
+  <xs:complexType name="BlockType">
+    <xs:sequence dfdl:separator="%NL;">
+      <xs:element name="BlockControlHeader" type="catair:BlockControlHeaderType" dfdl:initiator="B"/>
+        <xs:sequence dfdl:separator="%NL;" >  
+         <xs:element name="EntrySummaryHeaderControl" type="xs:string" maxOccurs="unbounded" dfdl:lengthKind="delimited" dfdl:initiator="10" />
+      </xs:sequence>  
+     <xs:element name="BlockControlTrailer" type="catair:BlockControlTrailerType" dfdl:initiator="Y"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BlocksType">
+    <xs:sequence>
+      <xs:element name="Block" type="catair:BlockType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Blocks" type="catair:BlocksType">
+    <xs:annotation>
+      <xs:documentation>
+        The Blocks element is the root element of the CATAIR message.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="BlockControlHeaderType">
+    <xs:sequence> 
+      <xs:element name="Data" type="xs:string" dfdl:lengthKind="delimited" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BlockControlTrailerType">
+    <xs:sequence>
+      <xs:element name="Data" type="xs:string" dfdl:length="79" dfdl:lengthKind="explicit"/>
+    </xs:sequence>  
+
+  </xs:complexType>
+
+  <!--
+    Entry summary
+    -->
+
+  <xs:complexType name="EntrySummaryHeaderControlType">
+    <xs:sequence>
       <xs:element name="Data" type="xs:string" dfdl:length="79" dfdl:lengthKind="explicit"/>
     </xs:sequence>
   </xs:complexType>
 
-  
+ 
+
+
 
 
 
