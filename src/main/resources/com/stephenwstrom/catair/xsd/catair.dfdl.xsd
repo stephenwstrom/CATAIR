@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+This schema is not yet complete.
+-->
+
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:catair="urn:catair" targetNamespace="urn:catair" elementFormDefault="unqualified">
+
+  <xs:include schemaLocation="DFDLGeneralFormat.dfdl.xsd"/>
+
+  <xs:annotation>
+    <xs:appinfo source="http://www.ogf.org/dfdl/">
+      <dfdl:format ref="catair:GeneralFormat"/>
+    </xs:appinfo>
+  </xs:annotation>
+
+  <xs:simpleType name="AN">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+<!--   <xs:simpleType name="D">
+    <xs:restriction base="xs:date" dfdl:length="6" dfdl:lengthKind="explicit" dfdl:calendarPatternKind="explicit" dfdl:calendarPattern="MMddyy"  >
+    </xs:restriction>
+  </xs:simpleType>
+ -->
+
+<!--
+  Batches
+-->
+
+<!-- <xs:complexType name="BatchType">
+      <xs:sequence>
+        <xs:element name="BatchControlHeader" type="catair:BatchControlHeaderType" dfdl:initiator="A"/>
+        <xs:sequence>
+         <xs:element name="Record" type="xs:string" dfdl:length="80" dfdl:lengthKind="explicit"/>
+        </xs:sequence>
+        <xs:element name="BatchControlTrailer" type="catair:BatchControlTrailerType" dfdl:initiator="Z"/>  
+      </xs:sequence>
+  </xs:complexType> -->
+
+  <xs:complexType name="BatchType">
+    <xs:sequence dfdl:separator="%NL;">
+      <xs:element name="BatchControlHeader" type="catair:BatchControlHeaderType" dfdl:initiator="A"/>
+      <xs:element name="Blocks" type="catair:BlocksType" maxOccurs="unbounded"/>
+      <xs:element name="BatchControlTrailer" type="catair:BatchControlTrailerType" dfdl:initiator="Z"/>
+    </xs:sequence>  
+  </xs:complexType>
+
+  
+
+  <xs:complexType name="EntrySummaryTransactionGrouping">
+    <xs:sequence dfdl:separator="%NL;">
+      <xs:element name="EntrySummaryHeaderControl" type="catair:EntrySummaryHeaderControlType" dfdl:initiator="10"/>
+    </xs:sequence>   
+  </xs:complexType>
+
+
+
+  <xs:element name="Batches" type="catair:BatchesType">
+    <xs:annotation>
+      <xs:documentation>
+        The Batch element is the root element of the CATAIR message.
+      </xs:documentation>
+    </xs:annotation>
+
+  </xs:element>
+
+
+  <xs:complexType name="BatchesType">
+    <xs:sequence>
+      <xs:element name="Batch" type="catair:BatchType" maxOccurs="unbounded"/>
+    </xs:sequence>  
+  </xs:complexType>
+
+
+
+  <xs:complexType name="BatchControlHeaderType">
+    <xs:sequence>
+<!--       <xs:element name="ControlIdentifier" fixed="A" type="xs:string" dfdl:length="1" dfdl:lengthKind="explicit"/>
+ -->      
+      <xs:element name="SenderReceiverSiteCode" type="catair:AN" dfdl:length="4" dfdl:lengthKind="explicit"/>
+      <xs:element name="SenderReceiverIDCode" type="xs:string" dfdl:length="3" dfdl:lengthKind="explicit"/>
+      <xs:element name="CommunicationPassword" type="xs:string" dfdl:length="6" dfdl:lengthKind="explicit"/>
+      <xs:element name="TransmissionDate" type="xs:date" dfdl:length="6" dfdl:lengthKind="explicit" dfdl:calendarPatternKind="explicit" dfdl:calendarPattern="MMddyy"/>
+      <xs:element name="Filler1" fixed="     " type="xs:string" dfdl:length="5" dfdl:lengthKind="explicit"/>
+      <xs:element name="ApplicationIdentifierCode" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>
+      <xs:element name="Filler2" fixed="          " type="xs:string" dfdl:length="10" dfdl:lengthKind="explicit"/>
+      <xs:element name="SenderReceiverOfficeCode" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>
+      <xs:element name="Filler3" fixed="                    " type="xs:string" dfdl:length="20" dfdl:lengthKind="explicit"/>
+      <xs:element name="TransmittersUserDataText" type="xs:string" dfdl:length="21" dfdl:lengthKind="explicit"  />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BatchControlTrailerType">
+    <xs:sequence>
+      <xs:element name="Data" type="xs:string" dfdl:lengthKind="delimited"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+<!--
+  Blocks
+-->
+
+  
+  <xs:complexType name="BlockType">
+    <xs:sequence dfdl:separator="%NL;">
+      <xs:element name="BlockControlHeader" type="catair:BlockControlHeaderType" dfdl:initiator="B"/>
+
+
+      <xs:element name="Record" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence> 
+            <xs:element name="ControlIdentifier" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>  
+            <xs:choice dfdl:choiceDispatchKey="{ fn:substring(./ControlIdentifier,1,2) }">  
+              <xs:element name="EntrySummaryHeaderControl" type="xs:string" dfdl:lengthKind="delimited" dfdl:choiceBranchKey="10" /> 
+              <xs:element name="Record" dfdl:choiceBranchKey="SE">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ControlIdentifier" type="xs:string" dfdl:length="2" dfdl:lengthKind="explicit"/>
+                    <xs:choice dfdl:choiceDispatchKey="{ fn:substring(./ControlIdentifier,1,2) }">
+                      <xs:element name="CorrectionRequestContactDetail" type="xs:string" dfdl:lengthKind="delimited" dfdl:choiceBranchKey="13" />
+                      <xs:element name="CargoReferenceInformation" type="xs:string" dfdl:lengthKind="delimited" dfdl:choiceBranchKey="20" />
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>  
+          </xs:sequence>  
+        </xs:complexType> 
+        
+
+
+
+
+      </xs:element>
+
+     <xs:element name="BlockControlTrailer" type="catair:BlockControlTrailerType" dfdl:initiator="Y"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BlocksType">
+    <xs:sequence>
+      <xs:element name="Block" type="catair:BlockType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Blocks" type="catair:BlocksType">
+    <xs:annotation>
+      <xs:documentation>
+        The Blocks element is the root element of the CATAIR message.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="BlockControlHeaderType">
+    <xs:sequence> 
+      <xs:element name="Data" type="xs:string" dfdl:lengthKind="delimited" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BlockControlTrailerType">
+    <xs:sequence>
+      <xs:element name="Data" type="xs:string" dfdl:length="79" dfdl:lengthKind="explicit"/>
+    </xs:sequence>  
+
+  </xs:complexType>
+
+  <!--
+    Entry summary
+    -->
+
+  <xs:complexType name="EntrySummaryHeaderControlType">
+    <xs:sequence>
+      <xs:element name="Data" type="xs:string" dfdl:length="79" dfdl:lengthKind="explicit"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CargoReleaseControlType">
+    <xs:sequence>
+      <xs:element name="Data" type="xs:string" dfdl:length="77" dfdl:lengthKind="explicit"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+
+
+
+</xs:schema>

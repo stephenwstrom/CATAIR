@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catair xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
+ xmlns:fn="http://www.w3.org/2005/xpath-functions"
+ xmlns="urn:catair"
+ xsi:schemaLocation="urn:catair file:/Users/strom/github/CATAIR/src/main/resources/com/stephenwstrom/catair/xsd/catair.dfdl.xsd">
+    <batchControlHeader xmlns="">
+        <ControlIdentifier>A</ControlIdentifier>
+        <SenderReceiverSiteCode>ABCD</SenderReceiverSiteCode>
+        <SenderReceiverIDCode>ABC</SenderReceiverIDCode>
+        <CommunicationPassword>ABCDEF</CommunicationPassword>
+        <TransmissionDate>2006-05-04</TransmissionDate>
+        <Filler1>     </Filler1>
+        <ApplicationIdentifierCode>AE</ApplicationIdentifierCode>
+        <Filler2>          </Filler2>
+        <SenderReceiverOfficeCode>AB</SenderReceiverOfficeCode>
+        <Filler3>                    </Filler3>
+        <TransmittersUserDataText>123456789012345678901</TransmittersUserDataText>
+    </batchControlHeader>
+</Catair>

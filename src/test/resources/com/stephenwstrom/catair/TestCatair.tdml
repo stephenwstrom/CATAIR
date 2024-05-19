@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tdml:testSuite suiteName="Catair" description="Catair tests"
+  xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" 
+  xmlns:fn="http://www.w3.org/2005/xpath-functions" 
+  xmlns:tdml="http://www.ibm.com/xmlns/dfdl/testData" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  defaultRoundTrip="onePass">
+
+  <tdml:parserTestCase name="test_catair_01" root="Catair" model="com/stephenwstrom/catair/xsd/catair.dfdl.xsd">
+    <tdml:document>
+      <tdml:documentPart type="file">com/stephenwstrom/catair/data/test_01.catair</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">com/stephenwstrom/catair/infosets/test_01.catair.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+</tdml:testSuite>
