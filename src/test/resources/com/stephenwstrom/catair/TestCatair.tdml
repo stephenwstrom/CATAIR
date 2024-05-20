@@ -8,7 +8,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   defaultRoundTrip="onePass">
 
-  <tdml:parserTestCase name="test_catair_01" root="Catair" model="com/stephenwstrom/catair/xsd/catair.dfdl.xsd">
+  <tdml:parserTestCase name="test_catair_01" root="Batches" model="com/stephenwstrom/catair/xsd/catair.dfdl.xsd">
     <tdml:document>
       <tdml:documentPart type="file">com/stephenwstrom/catair/data/test_01.catair</tdml:documentPart>
     </tdml:document>

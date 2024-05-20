@@ -1,20 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Catair xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
- xmlns:fn="http://www.w3.org/2005/xpath-functions"
- xmlns="urn:catair"
- xsi:schemaLocation="urn:catair file:/Users/strom/github/CATAIR/src/main/resources/com/stephenwstrom/catair/xsd/catair.dfdl.xsd">
-    <batchControlHeader xmlns="">
-        <ControlIdentifier>A</ControlIdentifier>
-        <SenderReceiverSiteCode>ABCD</SenderReceiverSiteCode>
-        <SenderReceiverIDCode>ABC</SenderReceiverIDCode>
-        <CommunicationPassword>ABCDEF</CommunicationPassword>
-        <TransmissionDate>2006-05-04</TransmissionDate>
-        <Filler1>     </Filler1>
-        <ApplicationIdentifierCode>AE</ApplicationIdentifierCode>
-        <Filler2>          </Filler2>
-        <SenderReceiverOfficeCode>AB</SenderReceiverOfficeCode>
-        <Filler3>                    </Filler3>
-        <TransmittersUserDataText>123456789012345678901</TransmittersUserDataText>
-    </batchControlHeader>
-</Catair>
+<catair:Batches xmlns:catair="urn:catair">
+  <Batch>
+    <BatchControlHeader>
+      <SenderReceiverSiteCode>ABCD</SenderReceiverSiteCode>
+      <SenderReceiverIDCode>ABC</SenderReceiverIDCode>
+      <CommunicationPassword>ABCDEF</CommunicationPassword>
+      <TransmissionDate>2006-05-04</TransmissionDate>
+      <Filler1>     </Filler1>
+      <ApplicationIdentifierCode>AE</ApplicationIdentifierCode>
+      <Filler2>          </Filler2>
+      <SenderReceiverOfficeCode>AB</SenderReceiverOfficeCode>
+      <Filler3>                    </Filler3>
+      <TransmittersUserDataText>123456789012345678901</TransmittersUserDataText>
+    </BatchControlHeader>
+    <Blocks>
+      <Block>
+        <BlockControlHeader>
+          <Data>0123456789012345678901234567890123456789012345678901234567890123456789012345678</Data>
+        </BlockControlHeader>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <Record>
+          <ControlIdentifier>SE</ControlIdentifier>
+          <Record>
+            <ControlIdentifier>20</ControlIdentifier>
+            <CargoReferenceInformation>3456789012345678901234567890123456789012345678901234567890123456789012345678</CargoReferenceInformation>
+          </Record>
+        </Record>
+        <Record>
+          <ControlIdentifier>SE</ControlIdentifier>
+          <Record>
+            <ControlIdentifier>13</ControlIdentifier>
+            <CorrectionRequestContactDetail>3456789012345678901234567890123456789012345678901234567890123456789012345678</CorrectionRequestContactDetail>
+          </Record>
+        </Record>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <BlockControlTrailer>
+          <Data>0123456789012345678901234567890123456789012345678901234567890123456789012345678</Data>
+        </BlockControlTrailer>
+      </Block>
+    </Blocks>
+    <Blocks>
+      <Block>
+        <BlockControlHeader>
+          <Data>0123456789012345678901234567890123456789012345678901234567890123456789012345678</Data>
+        </BlockControlHeader>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <Record>
+          <ControlIdentifier>10</ControlIdentifier>
+          <EntrySummaryHeaderControl>123456789012345678901234567890123456789012345678901234567890123456789012345678</EntrySummaryHeaderControl>
+        </Record>
+        <BlockControlTrailer>
+          <Data>0123456789012345678901234567890123456789012345678901234567890123456789012345678</Data>
+        </BlockControlTrailer>
+      </Block>
+    </Blocks>
+    <BatchControlTrailer>
+      <Data>0123456789012345678901234567890123456789012345678901234567890123456789012345678</Data>
+    </BatchControlTrailer>
+  </Batch>
+</catair:Batches>
