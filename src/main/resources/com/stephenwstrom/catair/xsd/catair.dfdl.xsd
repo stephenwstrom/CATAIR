@@ -180,6 +180,10 @@ This schema is not yet complete.
     </xs:sequence>
   </xs:complexType>
 
+  <!--
+  Cargo release
+  -->
+
   <xs:complexType name="CargoReleaseControlType">
     <xs:sequence>
       <xs:element name="Data" type="xs:string" dfdl:length="77" dfdl:lengthKind="explicit"/>
