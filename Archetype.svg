@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="158 176 514 168" width="514" height="168">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Canvas_1" fill-opacity="1" stroke-dasharray="none" stroke="none" fill="none" stroke-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" x="158" y="176" width="514" height="168"/>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_2">
+        <ellipse cx="419.75" cy="316.25" rx="53.7500858872269" ry="27.2500435428267" fill="white"/>
+        <ellipse cx="419.75" cy="316.25" rx="53.7500858872269" ry="27.2500435428267" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(381.75 297.802)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="17.696" y="15" xml:space="preserve">DFDL </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="14.896" y="33.448" xml:space="preserve">Parser</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="158.5" y="289" width="129" height="54.5" fill="white"/>
+        <rect x="158.5" y="289" width="129" height="54.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(163.5 297.802)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="32.684" y="15" xml:space="preserve">CATAIR </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="27.196" y="33.448" xml:space="preserve">message</tspan>
+        </text>
+      </g>
+      <g id="Line_4">
+        <line x1="287.5" y1="316.25" x2="356.09997" y2="316.25" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_5">
+        <rect x="355.25" y="176.5" width="129" height="54.5" fill="white"/>
+        <rect x="355.25" y="176.5" width="129" height="54.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(360.25 185.302)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="10.156" y="15" xml:space="preserve">CATAIR DFDL </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="31.34" y="33.448" xml:space="preserve">schema</tspan>
+        </text>
+      </g>
+      <g id="Line_6">
+        <line x1="419.75" y1="231" x2="419.75" y2="279.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_7">
+        <rect x="542.5" y="289" width="129" height="54.5" fill="white"/>
+        <rect x="542.5" y="289" width="129" height="54.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(547.5 307.026)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="38.308" y="15" xml:space="preserve">JSON</tspan>
+        </text>
+      </g>
+      <g id="Line_8">
+        <line x1="473.5" y1="316.25" x2="532.6" y2="316.25" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
