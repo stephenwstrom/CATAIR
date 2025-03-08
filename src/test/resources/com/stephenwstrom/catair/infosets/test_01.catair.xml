@@ -6,11 +6,8 @@
       <SenderReceiverIDCode>ABC</SenderReceiverIDCode>
       <CommunicationPassword>ABCDEF</CommunicationPassword>
       <TransmissionDate>2006-05-04</TransmissionDate>
-      <Filler1>     </Filler1>
       <ApplicationIdentifierCode>AE</ApplicationIdentifierCode>
-      <Filler2>          </Filler2>
       <SenderReceiverOfficeCode>AB</SenderReceiverOfficeCode>
-      <Filler3>                    </Filler3>
       <TransmittersUserDataText>123456789012345678901</TransmittersUserDataText>
     </BatchControlHeader>
     <Blocks>
