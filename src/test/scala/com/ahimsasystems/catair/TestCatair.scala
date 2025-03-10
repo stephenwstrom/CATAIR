@@ -1,12 +1,10 @@
-package com.stephenwstrom.catair
-
-import org.junit.AfterClass
-import org.junit.Test
+package com.ahimsasystems.catair
 
 import org.apache.daffodil.tdml.Runner
+import org.junit.{AfterClass, Test}
 
 object TestCatair {
-  lazy val runner = Runner("/com/stephenwstrom/catair/", "TestCatair.tdml")
+  lazy val runner = Runner("/com/ahimsasystems/catair/", "TestCatair.tdml")
 
   @AfterClass def shutDown {
     runner.reset

@@ -1,6 +1,6 @@
 name := "dfdl-catair"
 
-organization := "com.stephenwstrom"
+organization := "com.ahimsasystems"
 
 version := "0.1.0-SNAPSHOT"
 
